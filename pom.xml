@@ -3,7 +3,7 @@
   <groupId>com.accumulobook</groupId>
   <artifactId>accumulo-quickinstall</artifactId>
   <packaging>pom</packaging>
-  <version>1.6.1</version>
+  <version>1.9.2</version>
   <description>Create a standalone distribution of the Apache Accumulo
   Project version ${project.version} with dependencies</description>
   <name>AccumuloBook QuickInstall</name>
@@ -21,22 +21,22 @@
   </pluginRepositories>
   <properties>
     <quickinstall.location>${project.build.directory}/archive-tmp</quickinstall.location>
-    <hadoop.version>2.4.1</hadoop.version>
-    <hadoop.url>http://archive.apache.org/dist/hadoop/core/hadoop-${hadoop.version}/hadoop-${hadoop.version}.tar.gz</hadoop.url>
-    <hadoop.md5>0ce4cfd282002b7aa42cf71df4145150</hadoop.md5>
-    <zookeeper.version>3.4.6</zookeeper.version>
+    <hadoop.version>2.9.2</hadoop.version>
+    <hadoop.url>http://archive.apache.org/dist/hadoop/common/hadoop-${hadoop.version}/hadoop-${hadoop.version}.tar.gz</hadoop.url>
+    <hadoop.md5>82db6a62febd8c2976d75b8bd5513315</hadoop.md5>
+    <zookeeper.version>3.4.9</zookeeper.version>
     <zookeeper.url>http://archive.apache.org/dist/zookeeper/zookeeper-${zookeeper.version}/zookeeper-${zookeeper.version}.tar.gz</zookeeper.url>
-    <zookeeper.md5>971c379ba65714fd25dc5fe8f14e9ad1</zookeeper.md5>
+    <zookeeper.md5>3e8506075212c2d41030d874fcc9dcd2</zookeeper.md5>
     <accumulo.version>${project.version}</accumulo.version>
     <accumulo.url>http://archive.apache.org/dist/accumulo/${accumulo.version}/accumulo-${accumulo.version}-bin.tar.gz</accumulo.url>
-    <accumulo.md5>523d3ab55a6fe2b48c0a1d012f9c2ffc</accumulo.md5>
+    <accumulo.md5>f4d96b4018c1672b148e700ea189e7ac</accumulo.md5>
   </properties>
   <build>
     <plugins>
       <plugin>
         <groupId>com.googlecode.maven-download-plugin</groupId>
         <artifactId>download-maven-plugin</artifactId>
-        <version>1.2.0</version>
+        <version>1.4.1</version>
         <executions>
           <execution>
             <id>fetch-hadoop</id>
@@ -107,7 +107,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.4</version>
+        <version>3.1.1</version>
         <configuration>
           <tarLongFileMode>gnu</tarLongFileMode>
           <descriptors>
