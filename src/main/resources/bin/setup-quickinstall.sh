@@ -68,7 +68,7 @@ check_ssh() {
   local HOSTNAME=$(hostname)
   local SSH_HOST=$(_ssh)
   if [[ "${HOSTNAME}" != "${SSH_HOST}" ]]; then
-    echo "Problem with SSH, ran ssh -o 'PreferredAuthentications=publickey' localhost \"hostname\". Expected ${HOSTNAME}, but got ${SSH_HOST}. Please see file:///$(_script_dir)/hadoop-2.4.1/share/doc/hadoop/hadoop-project-dist/hadoop-common/SingleCluster.html#Setup_passphraseless_ssh.  Once ssh without a password is working, execute './bin/setup-quickinstall' again"
+    echo "Problem with SSH, ran ssh -o 'PreferredAuthentications=publickey' localhost \"hostname\". Expected ${HOSTNAME}, but got ${SSH_HOST}. Please see file:///$(_script_dir)/hadoop-2.9.2/share/doc/hadoop/hadoop-project-dist/hadoop-common/SingleCluster.html#Setup_passphraseless_ssh.  Once ssh without a password is working, execute './bin/setup-quickinstall' again"
     ret=1
   fi
   return $ret
@@ -76,7 +76,7 @@ check_ssh() {
 
 setup_hadoop_conf() {
   echo "Setting up Hadoop conf"
-  HADOOP_HOME="${QI_HOME}/hadoop-2.4.1"
+  HADOOP_HOME="${QI_HOME}/hadoop-2.9.2"
   HADOOP_PREFIX="${HADOOP_HOME}"
   HADOOP_YARN_HOME="${HADOOP_HOME}"
   HADOOP_COMMON_HOME="${HADOOP_HOME}"
@@ -97,8 +97,8 @@ setup_hadoop_conf() {
   # for the correct version of your OS
   if [ "$(uname)" == "Darwin" ]; then
     if [ "$JAVA_VERSION" == "1.7" ] || [ "$JAVA_VERSION" == "1.8" ]; then
-      echo "Using Mac OSX native libraries built on OSX 10.8.5 with Java 1.7.0_60 using the instructions at"
-      echo "http://gauravkohli.com/2014/09/28/building-native-hadoop-v-2-4-1-libraries-for-os-x/"
+      echo "Using Mac OSX native libraries built on OSX 10.8.5 with Java 1.8.191 using the instructions at"
+      echo "http://gauravkohli.com/2014/09/28/building-native-hadoop-v-2-9-2-libraries-for-os-x/"
       echo "Remove the symlink in \${HADOOP_HOME}/lib/ if you have problems"
       for f in ${HADOOP_HOME}/lib/darwin-native/*; do
         ln -s "${f}" "${HADOOP_HOME}/lib/$(basename $f)"
@@ -108,8 +108,8 @@ setup_hadoop_conf() {
     fi
   elif [ "$(uname)" == "Linux" ]; then
     if [ "$(uname -m)" == "x86_64" ]; then
-      echo "Using 64 bit native libraries built on CentOS 6.6 with Java 1.7 using the instructions at"
-      echo "http://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/NativeLibraries.html"
+      echo "Using 64 bit native libraries built on CentOS 6.6 with Java 1.8 using the instructions at"
+      echo "http://hadoop.apache.org/docs/r2.9.2/hadoop-project-dist/hadoop-common/NativeLibraries.html"
       echo "Remove symlink in \${HADOOP_HOME}/lib/ directory if you have a problem"
       for f in ${HADOOP_HOME}/lib/linux-64-native/*; do
         ln -s "${f}" "${HADOOP_HOME}/lib/$(basename $f)"
@@ -150,7 +150,7 @@ start_hadoop() {
 
 setup_zookeeper_conf() {
   echo "Setting up Zookeeper conf"
-  ZOOKEEPER_HOME="${QI_HOME}/zookeeper-3.4.6"
+  ZOOKEEPER_HOME="${QI_HOME}/zookeeper-3.4.9"
   _replace_stuff "QI_ZOOKEEPER_HOME" "${ZOOKEEPER_HOME}" ${ZOOKEEPER_HOME}/bin/zkEnv.sh
   ZOO_DATA="${QI_HOME}/zk-data"
   mkdir -p ${ZOO_DATA}
@@ -165,7 +165,7 @@ start_zookeeper() {
 
 setup_accumulo_conf() {
   echo "Setting up Accumulo conf"
-  ACCUMULO_HOME="${QI_HOME}/accumulo-1.6.1"
+  ACCUMULO_HOME="${QI_HOME}/accumulo-1.9.2"
   echo "Attempting to build Accumulo native libraries"
   EXAMPLE_CONFIG="2GB/native-standalone"
   local return_dir=${PWD}

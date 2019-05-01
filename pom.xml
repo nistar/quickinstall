@@ -20,6 +20,7 @@
     </pluginRepository>
   </pluginRepositories>
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <quickinstall.location>${project.build.directory}/archive-tmp</quickinstall.location>
     <hadoop.version>2.9.2</hadoop.version>
     <hadoop.url>http://archive.apache.org/dist/hadoop/common/hadoop-${hadoop.version}/hadoop-${hadoop.version}.tar.gz</hadoop.url>
