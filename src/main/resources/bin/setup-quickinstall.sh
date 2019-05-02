@@ -90,7 +90,7 @@ setup_hadoop_conf() {
   mkdir -p ${HDFS_DIR}/data
   _replace_stuff "QI_HDFS_DIR" "${HDFS_DIR}" ${HADOOP_HOME}/etc/hadoop/hdfs-site.xml
   # move existing native libraries to linux-32-native
-  mv "${HADOOP_HOME}/lib/native" "${HADOOP_HOME}/lib/linux-32-native"
+  #mv "${HADOOP_HOME}/lib/native" "${HADOOP_HOME}/lib/linux-32-native"
   # there is a bug in this hadoop that requires them under /lib
   # but this version of bin/accumulo is setting lib/native as part of the
   # java.library.path so it is getting confused.  Relink below
@@ -111,7 +111,7 @@ setup_hadoop_conf() {
       echo "Using 64 bit native libraries built on CentOS 6.6 with Java 1.8 using the instructions at"
       echo "http://hadoop.apache.org/docs/r2.9.2/hadoop-project-dist/hadoop-common/NativeLibraries.html"
       echo "Remove symlink in \${HADOOP_HOME}/lib/ directory if you have a problem"
-      for f in ${HADOOP_HOME}/lib/linux-64-native/*; do
+      for f in ${HADOOP_HOME}/lib/native/*; do
         ln -s "${f}" "${HADOOP_HOME}/lib/$(basename $f)"
       done
     else
